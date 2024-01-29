@@ -1,0 +1,32 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 20.x
+    commands:
+      - echo "Install Phase starting..."
+      - echo "Use this to install dependencies the environment will need for your build task(s)"
+      - node --version
+    finally:
+      - echo "Install Phase complete"
+  pre_build:
+    commands:
+      - echo "Pre_Build Phase starting..."
+      - echo "Use this to accomplish any required set up (that isn't install related)"
+      - echo "For example....Logging in to Docker Hub or your Container Registry of coice"
+    finally:
+      - echo "Pre_Build Phase complete"
+  build: 
+    commands: 
+      - echo "Build Phase starting..."
+      - echo "This is where we run the commands to build our project"
+      - echo "For example... we might want to run 'npm run build' or 'docker build' etc"
+    finally: 
+      - echo "Build Phase complete"
+  post_build:
+    commands: 
+      - echo "Post_Build Phase starting..."
+      - echo "Use this for any cleanup or finally steps. Usually storing some artifact(s) somewhere."
+      - echo "For example...pushing an image that you build to ECR/DockerHub - or storing some files in an S3"
+      - echo "N.B. - don't use this for reporting - there's a 'reports' phase for that"
